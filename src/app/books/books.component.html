@@ -1,0 +1,14 @@
+<p>
+  books component!
+</p>
+<div class="container">
+  <div class="singleframe" *ngFor='let value of books'>
+    <div style="height:50%">
+    <a [href] = "value.data.url">
+      <img [src] = "value.data.cover.large"  [title] = "value.data.title"
+       class="book-image">
+    </a>
+   </div>
+  </div>
+  <div class = "clear-frame"></div>
+</div>

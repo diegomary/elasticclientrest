@@ -1,0 +1,126 @@
+.intro {
+    background-color: white;
+}
+
+.container {
+  width:80%;
+  margin:0 auto;
+}
+
+@media screen and (max-width: 600px) {
+  .singleframe {
+    width:30%;
+    margin:1.5%;
+    float:left;
+    background-color:silver;
+    height:210px;
+    border-radius:5%;
+  }
+  .par-title {
+    margin:0;
+    color:#97635D;
+    font-weight:bold;
+    font-family:Arial;
+    font-size:xx-small;
+  }
+
+  .par-author-name {
+    margin-top:3%;
+    font-family:Arial;
+    font-size:xx-small;
+  }
+}
+@media screen and (min-width: 600px) {
+  .singleframe {
+    width:30%;
+    margin:1.5%;
+    float:left;
+    background-color:silver;
+    height:300px;
+    border-radius:5%;
+  }
+  .par-title {
+    margin:0;
+    color:#97635D;
+    font-weight:bold;
+    font-family:Arial;
+    font-size:small;
+  }
+
+  .par-author-name {
+    margin-top:3%;
+    font-family:Arial;
+    font-size:small;
+  }
+}
+@media screen and (min-width: 800px) {
+  .singleframe {
+    width:30%;
+    margin:1.5%;
+    float:left;
+    background-color:silver;
+    height:400px;
+    border-radius:5%;
+  }
+  .par-title {
+    margin:0;
+    color:#97635D;
+    font-weight:bold;
+    font-family:Arial;
+    font-size:medium;
+  }
+
+  .par-author-name {
+    margin-top:3%;
+    font-family:Arial;
+    font-size:medium;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .singleframe {
+    width:30%;
+    margin:1.5%;
+    float:left;
+    background-color:silver;
+    height:500px;
+    border-radius:5%;
+  }
+
+  .par-title {
+    margin:0;
+    color:#97635D;
+    font-weight:bold;
+    font-family:Arial;
+    font-size:larger
+  }
+
+  .par-author-name {
+    margin-top:3%;
+    font-family:Arial;
+      font-size:larger;
+  }
+
+}
+
+.book-image {
+  width:40%;
+  display:block;
+  margin:auto;
+  margin-top:10%
+}
+
+.clear-frame {
+  clear:left;
+}
+
+.book-info-container {
+  margin-left:10%;
+  margin-right:10%;
+  margin-top:4%;
+
+
+}
+
+.span-author-color {
+  color:#97435D;
+}
