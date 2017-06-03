@@ -47,7 +47,7 @@ export class ElasticService {
        })
   }
   postVerbUnsafe(elasticserver, rawData) {
-
+    this.headers.delete("Authorization");
     this.headers.set("Content-Type",'application/x-www-form-urlencoded');
     return this.http.post(elasticserver,rawData, {headers:this.headers})
       .map( res => { return res.json();})
@@ -73,7 +73,7 @@ export class ElasticService {
        })
   }
   putVerbUnsafe(elasticserver, rawData) {
-
+    this.headers.delete("Authorization");
     this.headers.set("Content-Type",'application/x-www-form-urlencoded');
     return this.http.put(elasticserver,rawData, {headers:this.headers})
       .map( res => { return res.json();})
@@ -84,11 +84,48 @@ export class ElasticService {
         return Observable.throw(error);
        })
   }
+  deleteVerb(basictoken, elasticserver, rawData) {
+
+    this.headers.set("Authorization",basictoken);
+    this.headers.set("Content-Type",'application/x-www-form-urlencoded');
+    let reqOptions = new RequestOptions({
+      headers: this.headers,
+      body: rawData
+    })
+
+    return this.http.delete(elasticserver,reqOptions)
+      .map( res => { return res.json();})
+      .catch(  (error) => {
+          if (error.status === 401) {
+          return Observable.throw(error);
+        }
+        return Observable.throw(error);
+       })
+  }
+  deleteVerbUnsafe(elasticserver, rawData) {
+    this.headers.delete("Authorization");
+    this.headers.set("Content-Type",'application/x-www-form-urlencoded');
+    let reqOptions = new RequestOptions({
+      headers: this.headers,
+      body: rawData
+    })
+
+    return this.http.delete(elasticserver,reqOptions)
+      .map( res => { return res.json();})
+      .catch(  (error) => {
+          if (error.status === 401) {
+          return Observable.throw(error);
+        }
+        return Observable.throw(error);
+       })
+  }
+
+
   getVerb() {
     // return this.http.post('https://jwt-diegomary.rhcloud.com/api/authenticate',
     // JSON.stringify({username:'Diego Burlando',password:'password' }), {headers:this.headers})
     // .map((res:Response) => res.json());
   }
 
-  deleteVerb(){}
+
 }

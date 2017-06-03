@@ -22,16 +22,15 @@
     </table>
   </div>
   <div class="second-panel">
-    <table style="width:100%">
-      <tr>
-        <td style="width:10%"><span title="Please enter the url of the elastic search engine" style="width:100%">Url:</span></td>
-        <td style="width:90%"><input class="elastic-url-input"  type="text" [(ngModel)] ="elasticserver"></td>
-      </tr>
-    </table>
+    <div class="elastic-wrapper">
+    	<form>
+      <span style="font-size:x-small">Elastic Search Service URL</span>
+    	<input type="text" name="focus" required class="elastic-url" [(ngModel)] ="elasticserver" placeholder="Enter Url of elastic server" />
+    		<button class="close-icon" type="reset"></button>
+    	</form>
+    </div>
   </div>
-  <div class="third-panel">
-    TODO
-  </div>
+  
   <div style="clear:left;"></div>
 </div>
 <br>
@@ -39,20 +38,20 @@
     <p><button class="buttonqueries">Get</button></p>
     <p><button class="buttonqueries" (click)="postQuery()">Post</button></p>
     <p><button class="buttonqueries" (click)="putQuery()">Put</button></p>
-    <p><button class="buttonqueries">Delete</button></p>
+    <p><button class="buttonqueries" (click)="deleteQuery()">Delete</button></p>
 </div>
 
 <div class ="parameters">
   <p><input class="textqueries" type="text" placeholder=""></p>
   <p><input class="textqueries" type="text" placeholder=" post autogenerate an id eg: people/names" [(ngModel)] = "postParameter" ></p>
   <p><input class="textqueries" type="text" placeholder=" put allow to update an existing id eg: people/names/1" [(ngModel)] = "putParameter"></p>
-  <p><input class="textqueries" type="text"></p>
+  <p><input class="textqueries" type="text" placeholder=" delete indices and other actions" [(ngModel)] = "deleteParameter"></p>
  </div>
 
 
  <div class ="request-bad" [class.request-good]="requestCheck == 'goodRequest'">
    <p><textarea style="width:100%" [(ngModel)] = "queryPayload"  rows="11" placeholder=" Insert query here...." (ngModelChange)="queryChange($event)"></textarea></p>
-  </div>
+</div>
 
   <div style="clear:left;"></div>
 
