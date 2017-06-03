@@ -30,30 +30,26 @@
     	</form>
     </div>
   </div>
-  
+
   <div style="clear:left;"></div>
 </div>
 <br>
 <div class = "buttons">
-    <p><button class="buttonqueries">Get</button></p>
+    <p><button class="buttonqueries" (click)="getQuery()">Get</button></p>
     <p><button class="buttonqueries" (click)="postQuery()">Post</button></p>
     <p><button class="buttonqueries" (click)="putQuery()">Put</button></p>
     <p><button class="buttonqueries" (click)="deleteQuery()">Delete</button></p>
 </div>
-
 <div class ="parameters">
-  <p><input class="textqueries" type="text" placeholder=""></p>
+  <p><input class="textqueries" type="text" placeholder ="get allows to search and inspect.." [(ngModel)] = "getParameter" ></p>
   <p><input class="textqueries" type="text" placeholder=" post autogenerate an id eg: people/names" [(ngModel)] = "postParameter" ></p>
   <p><input class="textqueries" type="text" placeholder=" put allow to update an existing id eg: people/names/1" [(ngModel)] = "putParameter"></p>
   <p><input class="textqueries" type="text" placeholder=" delete indices and other actions" [(ngModel)] = "deleteParameter"></p>
  </div>
-
-
  <div class ="request-bad" [class.request-good]="requestCheck == 'goodRequest'">
    <p><textarea style="width:100%" [(ngModel)] = "queryPayload"  rows="11" placeholder=" Insert query here...." (ngModelChange)="queryChange($event)"></textarea></p>
 </div>
-
-  <div style="clear:left;"></div>
+<div style="clear:left;"></div>
 
 
 <textarea  rows="20" class="result" [(ngModel)] ="elasticresponse" placeholder="the response of the query.."></textarea>

@@ -21,6 +21,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
   putParameter = "";
   deleteParameter = "";
   elasticresponse = "";
+  getParameter = "";
   noAuth = false;
   authmode = "Auth";
   requestCheck = "";
@@ -52,7 +53,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
               }, (err) => { this.elasticresponse = err; } );
     }
   postQuery() {
-    let fullUrlwitParam = this.elasticserver + this.postParameter;    
+    let fullUrlwitParam = this.elasticserver + this.postParameter;
       // Unsafe no auth
       if(this.noAuth){
         this.elasticservice.postVerbUnsafe(fullUrlwitParam, this.queryPayload)
@@ -107,4 +108,30 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
               }, (err) => { this.elasticresponse = err; } );
 
   }
+  getQuery()
+  {
+    let fullUrlwitParam = this.elasticserver + this.getParameter;
+    // Unsafe no auth
+    if(this.noAuth){
+      this.elasticservice.getVerbUnsafe(fullUrlwitParam)
+      .subscribe( data => {
+                this.elasticresponse = JSON.stringify(data,undefined,4);
+              }, (err) => { this.elasticresponse = err; } );
+      return;
+    }
+
+    // SAfe Basic Auth
+    if(!this.username || !this.password) return;
+
+    this.authHeader = "Basic " + btoa(this.username + ":" + this.password);
+    this.elasticservice.getVerb(this.authHeader,fullUrlwitParam)
+    .subscribe( data => {
+              this.elasticresponse = JSON.stringify(data,undefined,4);
+            }, (err) => { this.elasticresponse = err; } );
+
+  }
+
+
+
+
 }
