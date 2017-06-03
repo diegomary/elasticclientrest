@@ -50,8 +50,9 @@
    <p><textarea style="width:100%" [(ngModel)] = "queryPayload"  rows="11" placeholder=" Insert query here...." (ngModelChange)="queryChange($event)"></textarea></p>
 </div>
 <div style="clear:left;"></div>
-
-
 <textarea  rows="20" class="result" [(ngModel)] ="elasticresponse" placeholder="the response of the query.."></textarea>
+<form>
+ <input onClick="this.form.reset()" type="file" multiple="false" (change)="bulkFilesChange($event)" accept=".txt,.json,.log">
+</form>
 <div>{{jqueryversion}}</div>
 </div>

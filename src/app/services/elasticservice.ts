@@ -119,8 +119,6 @@ export class ElasticService {
         return Observable.throw(error);
        })
   }
-
-
   getVerb(basictoken, elasticserver) {
     this.headers.set("Authorization",basictoken);
     return this.http.get(elasticserver,{headers:this.headers})
@@ -132,7 +130,6 @@ export class ElasticService {
         return Observable.throw(error);
        })
   }
-
   getVerbUnsafe(elasticserver) {
     return this.http.get(elasticserver)
       .map( res => { return res.json();})
@@ -143,10 +140,5 @@ export class ElasticService {
         return Observable.throw(error);
        })
   }
-
-    // return this.http.post('https://jwt-diegomary.rhcloud.com/api/authenticate',
-    // JSON.stringify({username:'Diego Burlando',password:'password' }), {headers:this.headers})
-    // .map((res:Response) => res.json());
-
 
 }

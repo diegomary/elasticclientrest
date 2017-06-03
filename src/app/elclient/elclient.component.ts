@@ -1,4 +1,11 @@
 import { Component, OnInit,AfterViewInit } from '@angular/core';
+
+
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import {Observable} from 'rxjs/Rx';
+
+
+
 import { ElasticService } from '../services/elasticservice';
 import $ from 'jquery/dist/jquery';
 @Component({
@@ -9,7 +16,7 @@ import $ from 'jquery/dist/jquery';
 })
 export class ElclientComponent implements OnInit, AfterViewInit  {
 
-  constructor(private elasticservice: ElasticService) { }
+  constructor(private elasticservice: ElasticService,private http: Http) { }
 
   jqueryversion = `This site is using Jquery ${$.fn.jquery}`;
   username = "";
@@ -33,6 +40,30 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
     try { let theJson = $.parseJSON(newValue); this.requestCheck = "goodRequest";}
     catch(err) {this.requestCheck = ""; console.log(err.message);}
   }
+
+  bulkFilesChange(event)
+  {
+  let fullUrlwitParam = this.elasticserver + this.postParameter;
+    let files = event.target.files;
+           if (files.length > 0) {
+           let headers = new Headers();
+           this.authHeader = "Basic " + btoa(this.username + ":" + this.password);
+           headers.set("Authorization", this.authHeader);
+           headers.set('Content-Type', 'multipart/form-data');
+           let options = new RequestOptions({ headers: headers });
+           this.http.post(fullUrlwitParam, files[0], options)
+               .map(res => res.json())
+               .catch(error => Observable.throw(error))
+               .subscribe(
+               data => {
+                  this.elasticresponse = JSON.stringify(data,undefined,4);
+               },
+               error => console.log(error),
+               () => {}
+             );
+       }
+  }
+
   authenticate() {
       // Unsafe no auth
       if(this.noAuth){
