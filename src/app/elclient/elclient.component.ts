@@ -1,10 +1,9 @@
+// for bulk loads
+// cat file.json | ./jq.exe -c '{"index": {}}, .' > test.json
+
 import { Component, OnInit,AfterViewInit } from '@angular/core';
-
-
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
-
-
 
 import { ElasticService } from '../services/elasticservice';
 import $ from 'jquery/dist/jquery';
@@ -17,7 +16,6 @@ import $ from 'jquery/dist/jquery';
 export class ElclientComponent implements OnInit, AfterViewInit  {
 
   constructor(private elasticservice: ElasticService,private http: Http) { }
-
   jqueryversion = `This site is using Jquery ${$.fn.jquery}`;
   username = "";
   queryPayload = ""
@@ -32,38 +30,35 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
   noAuth = false;
   authmode = "Auth";
   requestCheck = "";
+  catTutorial = "to create a bulk file download jq and then run: cat origin.json | .\/jq.exe -c \'{\"index\": {}}, .\' > bulkfile.json"
 
   ngAfterViewInit() {}
-  ngOnInit() {}
+  ngOnInit() { }
   cht() { this.authmode = this.noAuth === false? "Auth" :"Connect";  }
   queryChange(newValue) {
     try { let theJson = $.parseJSON(newValue); this.requestCheck = "goodRequest";}
     catch(err) {this.requestCheck = ""; console.log(err.message);}
   }
-
-  bulkFilesChange(event)
-  {
-  let fullUrlwitParam = this.elasticserver + this.postParameter;
+  bulkFilesChange(event)  {
+    let fullUrlwitParam = this.elasticserver + this.postParameter;
     let files = event.target.files;
-           if (files.length > 0) {
-           let headers = new Headers();
-           this.authHeader = "Basic " + btoa(this.username + ":" + this.password);
-           headers.set("Authorization", this.authHeader);
-           headers.set('Content-Type', 'multipart/form-data');
-           let options = new RequestOptions({ headers: headers });
-           this.http.post(fullUrlwitParam, files[0], options)
-               .map(res => res.json())
-               .catch(error => Observable.throw(error))
-               .subscribe(
-               data => {
-                  this.elasticresponse = JSON.stringify(data,undefined,4);
-               },
-               error => console.log(error),
-               () => {}
-             );
-       }
+       if (files.length > 0) {
+       let headers = new Headers();
+       this.authHeader = "Basic " + btoa(this.username + ":" + this.password);
+       if(!this.noAuth) headers.set("Authorization", this.authHeader);
+       headers.set('Content-Type', 'multipart/form-data');
+       let options = new RequestOptions({ headers: headers });
+       this.http.post(fullUrlwitParam, files[0], options)
+           .map(res => res.json())
+           .catch(error => Observable.throw(error))
+           .subscribe(
+           data => {
+              this.elasticresponse = JSON.stringify(data,undefined,4);
+           },
+           error => console.log(error),
+           () => {}
+         );}
   }
-
   authenticate() {
       // Unsafe no auth
       if(this.noAuth){
@@ -139,8 +134,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
               }, (err) => { this.elasticresponse = err; } );
 
   }
-  getQuery()
-  {
+  getQuery() {
     let fullUrlwitParam = this.elasticserver + this.getParameter;
     // Unsafe no auth
     if(this.noAuth){
@@ -161,8 +155,5 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
             }, (err) => { this.elasticresponse = err; } );
 
   }
-
-
-
 
 }

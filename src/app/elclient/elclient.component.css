@@ -1,7 +1,8 @@
 .container {
+  background-color:silver;
   font-family:verdana;
   font-size:small;
-      width:85%;
+      width:100%;
       margin:0 auto;
     }
 .credentials {
@@ -11,17 +12,18 @@
   border-style:solid;
   border-width:thin;
 border-radius:3px;
-padding-top:0.5%
+padding-top:0.5%;
+width:99%;
 }
+
 .buttons{
   float:left;
   width:7%;
-  display:inline-table;
 }
 
 .parameters{
   float:left;
-  width:33%;
+  width:34%;
   margin-left:1%;
   display:inline-table;
 }
@@ -29,7 +31,7 @@ padding-top:0.5%
 
 .request-bad{
   float:left;
-  width:57.5%;
+  width:56.5%;
   margin-left:1%;
   display:inline-table;
   background-color:red;
@@ -37,29 +39,46 @@ padding-top:0.5%
 
 .request-good{
   float:left;
-  width:57.5%;
+  width:56.5%;
   margin-left:1%;
   display:inline-table;
   background-color:green;
 }
 
+.binary-bulk{
+  width: 100%;
+  outline: 0;
+  cursor: pointer;
+  height: 30px;
+  border: 0;
+  border-radius: 3px;
+  background: green;
+  color: #fff;
+}
 
 .result {
-      width:100%;
+      width:99%;
       border-style:solid;
       border-width:thin;
       border-color:green;
       word-wrap: break-word;
     }
 
+    .query-payload{
+        width:98%;
+        margin-top:-2%;
+        margin-bottom:-3%;
+        margin-left:0.6%;
+    }
+
 
 .login-panel {
-  width:33.3%;
+  width:43.4%;
   height:100px;
   float:left;
 }
 .second-panel {
-  width:66.6%;
+  width:56%;
   height:100px;
   float:left;
 }
@@ -83,7 +102,7 @@ padding-top:0.5%
   color: #fff;
 }
 .textqueries{
-  width: 100%;
+  width: 99%;
   height: 28px;
   border-style:solid;
   border-width: thin;
@@ -99,22 +118,20 @@ textarea {
   width:100%;
 }
 
-.elastic-url,.close-icon,.elastic-wrapper {
-	position: relative;
-}
+
 .elastic-wrapper {
 	width: 100%;
 }
 .elastic-url {
   height: 28px;
-	width: 90%;
+	width: 100%;
 	border: 1px solid #ccc;
   outline: 0;
   border-radius: 3px;
 }
 .elastic-url:focus {
-	box-shadow: 0 0 15px 5px #b0e0ee;
-	border: 2px solid #bebede;
+  border: 1px solid #07c;
+  box-shadow: 0 0 10px #07c;
 }
 .close-icon {
 	border:1px solid transparent;
@@ -124,27 +141,7 @@ textarea {
   outline: 0;
   cursor: pointer;
 }
-.close-icon:after {
-	content: "X";
-	display: block;
-	width: 15px;
-	height: 15px;
-	position: relative;
-	background-color: #FA9595;
-	z-index:1;
-	right: 200%;
-	top: 0;
-	bottom: 0;
-	margin: auto;
-	padding: 2px;
-	border-radius: 50%;
-	text-align: center;
-	color: white;
-	font-weight: normal;
-	font-size: 12px;
-	box-shadow: 0 0 2px #E50F0F;
-	cursor: pointer;
-}
+
 .elastic-url:not(:valid) ~ .close-icon {
 	display: none;
 }
