@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>You Know, for Search</h1>
+  <h1 style="opacity:.4">You Know, for Search</h1>
   <br>
   <div class ="header">
     <div class="login-panel">
@@ -14,7 +14,7 @@
         </tr>
         <tr>
           <td>
-            <label>unsafe<input type ="checkbox" [(ngModel)]="noAuth" (change)="cht()" title="Insecure mode: for severs that are not protected"></label>
+            <label>unsafe&nbsp;<input type ="checkbox" [(ngModel)]="noAuth" (change)="cht()" title="Insecure mode: for severs that are not protected"></label>
           </td>
           <td><button class="button-auth" (click)="authenticate()">{{authmode}}</button></td>
         </tr>
@@ -44,20 +44,22 @@
         </form>
     </div>
     <div class ="parameters">
-          <p><input class="textqueries" type="text" placeholder ="get allows to search and inspect.." [(ngModel)] = "getParameter" ></p>
-          <p><input class="textqueries" type="text" placeholder=" post autogenerate an id eg: people/names" [(ngModel)] = "postParameter" ></p>
-          <p><input class="textqueries" type="text" placeholder=" put allow to update an existing id eg: people/names/1" [(ngModel)] = "putParameter"></p>
-          <p><input class="textqueries" type="text" placeholder=" delete indices and other actions" [(ngModel)] = "deleteParameter"></p>
-          <p><input class="textqueries" type="text" placeholder=" indexname/typename/_bulk ...." [(ngModel)] = "binaryParameter"></p>
+          <p><input class="textqueries" type="text" placeholder ="parameters for get request ......" [(ngModel)] = "getParameter" ></p>
+          <p><input class="textqueries" type="text" placeholder=" parameters for post request ......" [(ngModel)] = "postParameter" ></p>
+          <p><input class="textqueries" type="text" placeholder=" parameters for put request ......" [(ngModel)] = "putParameter"></p>
+          <p><input class="textqueries" type="text" placeholder=" parameters for delete request ......" [(ngModel)] = "deleteParameter"></p>
+          <p><input class="textqueries" type="text" placeholder=" eg: indexname/typename/_bulk" [(ngModel)] = "binaryParameter"></p>
     </div>
+
     <div class ="request-bad" [class.request-good]="requestCheck == 'goodRequest'">
-         <textarea class ="query-payload"  [(ngModel)] = "queryPayload"  rows="15" placeholder=" Insert query here...." (ngModelChange)="queryChange($event)"></textarea>
+
+         <textarea class ="query-payload"  [(ngModel)] = "queryPayload"  rows="15" placeholder=" request ......" (ngModelChange)="queryChange($event)"></textarea>
     </div>
     <div style="clear:left;"></div>
   </div>
   <br>
   <div class ="foot-operations" >
-    <textarea  rows="20" class="result" [(ngModel)] ="elasticresponse" placeholder="the response of the query.."></textarea>
+    <textarea  rows="20" class="result" [(ngModel)] ="elasticresponse" placeholder=" response......"></textarea>
     <span style="font-size:xx-small">{{catTutorial}}</span>
     <div style="font-size:xx-small">{{jqueryversion}}&nbsp;and Angular 2/4</div>
   </div>
