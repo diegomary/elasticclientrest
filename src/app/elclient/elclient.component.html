@@ -50,10 +50,8 @@
           <p><input class="textqueries" type="text" placeholder=" parameters for delete request ......" [(ngModel)] = "deleteParameter"></p>
           <p><input class="textqueries" type="text" placeholder=" eg: indexname/typename/_bulk" [(ngModel)] = "binaryParameter"></p>
     </div>
-
-    <div class ="request-bad" [class.request-good]="requestCheck == 'goodRequest'">
-
-         <textarea class ="query-payload"  [(ngModel)] = "queryPayload"  rows="15" placeholder=" request ......" (ngModelChange)="queryChange($event)"></textarea>
+    <div class ="request-container">
+         <p><textarea class ="request-bad" [class.request-good] = "requestCheck == 'goodRequest'"  [(ngModel)] = "queryPayload"  rows="15" placeholder=" request ......" (ngModelChange)="queryChange($event)"></textarea></p>
     </div>
     <div style="clear:left;"></div>
   </div>
