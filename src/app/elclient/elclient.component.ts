@@ -27,6 +27,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
   deleteParameter = "";
   elasticresponse = "";
   getParameter = "";
+  binaryParameter = "";
   noAuth = false;
   authmode = "Auth";
   requestCheck = "";
@@ -40,7 +41,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
     catch(err) {this.requestCheck = ""; console.log(err.message);}
   }
   bulkFilesChange(event)  {
-    let fullUrlwitParam = this.elasticserver + this.postParameter;
+    let fullUrlwitParam = this.elasticserver + this.binaryParameter;
     let files = event.target.files;
        if (files.length > 0) {
        let headers = new Headers();

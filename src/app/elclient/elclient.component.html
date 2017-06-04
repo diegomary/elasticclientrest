@@ -5,12 +5,12 @@
     <div class="login-panel">
       <table>
         <tr *ngIf="!noAuth">
-          <td style="width:20%"><span >user</span> </td>
-          <td style="width:80%" ><input style="width:60%" placeholder="type username" type="text" [(ngModel)] = "username"></td>
+          <td style="width:20%"><span>user</span> </td>
+          <td style="width:80%" ><input  class="login-inputs" placeholder="username" type="text" [(ngModel)] = "username"></td>
         </tr>
         <tr *ngIf="!noAuth">
           <td style="width:20%"><span >password&nbsp;</span></td>
-          <td style="width:80%" ><input style="width:60%"  placeholder="type password"  type="password" [(ngModel)] = "password"></td>
+          <td style="width:80%" ><input class="login-inputs"  placeholder="password"  type="password" [(ngModel)] = "password"></td>
         </tr>
         <tr>
           <td>
@@ -26,7 +26,6 @@
         <span style="font-size:x-small">Elastic Search Service URL</span>
       	<input type="text" name="focus" required class="elastic-url" [(ngModel)] ="elasticserver" placeholder="Enter Url of elastic server" />
 
-          <p style="font-size:xx-small">{{catTutorial}}</p>
       	</form>
       </div>
     </div>
@@ -35,20 +34,21 @@
   <br>
   <div class ="main-operations" >
     <div class = "buttons">
-        <p><button class="buttonqueries" (click)="getQuery()">Get</button></p>
-        <p><button class="buttonqueries" (click)="postQuery()">Post</button></p>
-        <p><button class="buttonqueries" (click)="putQuery()">Put</button></p>
-        <p><button class="buttonqueries" (click)="deleteQuery()">Delete</button></p>
-        <p><button disabled class="binary-bulk">Binary</button></p>
+        <p><button class="buttonqueries" (click)="getQuery()">get</button></p>
+        <p><button class="buttonqueries" (click)="postQuery()">post</button></p>
+        <p><button class="buttonqueries" (click)="putQuery()">put</button></p>
+        <p><button class="buttonqueries" (click)="deleteQuery()" style="padding-left:1%">delete</button></p>
+        <form>
+        <p><label for="bin-input" class="binary-bulk">bulk</label></p>
+          <input id="bin-input" style="display:none" onClick="this.form.reset()" type="file" multiple="false" (change)="bulkFilesChange($event)" accept=".txt,.json,.log">
+        </form>
     </div>
     <div class ="parameters">
           <p><input class="textqueries" type="text" placeholder ="get allows to search and inspect.." [(ngModel)] = "getParameter" ></p>
           <p><input class="textqueries" type="text" placeholder=" post autogenerate an id eg: people/names" [(ngModel)] = "postParameter" ></p>
           <p><input class="textqueries" type="text" placeholder=" put allow to update an existing id eg: people/names/1" [(ngModel)] = "putParameter"></p>
           <p><input class="textqueries" type="text" placeholder=" delete indices and other actions" [(ngModel)] = "deleteParameter"></p>
-          <form>
-            <p><input onClick="this.form.reset()" type="file" multiple="false" (change)="bulkFilesChange($event)" accept=".txt,.json,.log"></p>
-         </form>
+          <p><input class="textqueries" type="text" placeholder=" indexname/typename/_bulk ...." [(ngModel)] = "binaryParameter"></p>
     </div>
     <div class ="request-bad" [class.request-good]="requestCheck == 'goodRequest'">
          <textarea class ="query-payload"  [(ngModel)] = "queryPayload"  rows="15" placeholder=" Insert query here...." (ngModelChange)="queryChange($event)"></textarea>
@@ -58,7 +58,9 @@
   <br>
   <div class ="foot-operations" >
     <textarea  rows="20" class="result" [(ngModel)] ="elasticresponse" placeholder="the response of the query.."></textarea>
+    <span style="font-size:xx-small">{{catTutorial}}</span>
     <div style="font-size:xx-small">{{jqueryversion}}&nbsp;and Angular 2/4</div>
   </div>
-  <br>
+
+
 </div>

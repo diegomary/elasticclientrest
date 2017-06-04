@@ -4,10 +4,8 @@
   font-size:small;
   width:98%;
   margin:0 auto;
-    }
+  }
 .header{
-  border-style:solid;
-  border-width:thin;
   border-radius:3px;
   padding-top:0.5%;
   width:100%;
@@ -16,6 +14,12 @@
   width:41%;
   float:left;
 }
+.login-inputs {
+  border-style:solid;
+  border-color:#4e4f51;
+  border-width: thin;
+  width:60%;
+}
 .second-panel {
   width:59%;
   float:left;
@@ -23,7 +27,9 @@
 .elastic-url {
   height: 28px;
 	width: 99.5%;
-	border: 1px solid #ccc;
+  border-style:solid;
+  border-color:#4e4f51;
+  border-width: thin;
   outline: 0;
   border-radius: 3px;
 
@@ -32,17 +38,11 @@
   border: 1px solid #07c;
   box-shadow: 0 0 10px #07c;
 }
-.main-operations{
-  border-style:solid;
-  border-width:thin;
-  border-radius:3px;
+.main-operations {
   padding-top:0.5%;
   width:100%;
 }
 .foot-operations{
-  border-style:solid;
-  border-width:thin;
-  border-radius:3px;
   padding-top:0.5%;
   width:100%;
 }
@@ -69,9 +69,16 @@
   width: 99%;
   height: 28px;
   border-style:solid;
+  border-color:#4e4f51;
   border-width: thin;
   border-radius: 3px;
   margin-top:-0.5%;
+}
+.query-payload{
+  width:100%;
+  border-style:solid;
+  border-color:#4e4f51;
+  border-width: thin;
 }
 .request-bad{
   float:left;
@@ -85,43 +92,38 @@
   margin-left:1%;
   background-color:green;
 }
-
-.query-payload {}
-
 .binary-bulk{
   width: 100%;
+  display:inline-block;
   outline: 0;
+  border:1;
   cursor: pointer;
-  height: 30px;
-  border: 0;
+  height: 23px;
+  color: #fff;
+  padding-top:7px;
   border-radius: 3px;
   background: green;
-  color: #fff;
+  text-align:center;
+  vertical-align: bottom;
 }
 .result {
       width:99%;
       border-style:solid;
-      border-width:thin;
-      border-color:green;
+      border-color:#4e4f51;
+      border-width: thin;
       word-wrap: break-word;
     }
-
-
 .button-auth {
+  background: red;
+  outline:0;
   cursor: pointer;
-  height: 25px;
+  height: 30px;
+  color: #fff;
   border: 0;
   border-radius: 3px;
-  background: red;
   color: #fff;
 }
-
-
 .textqueries:focus {
     border: 1px solid #07c;
     box-shadow: 0 0 10px #07c;
-}
-
-textarea {
-  width:100%;
 }
