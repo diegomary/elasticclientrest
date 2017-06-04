@@ -13,19 +13,20 @@
   width:100%;
 }
 .login-panel {
-  width:40%;
+  width:41%;
   float:left;
 }
 .second-panel {
-  width:60%;
+  width:59%;
   float:left;
 }
 .elastic-url {
   height: 28px;
-	width: 90%;
+	width: 99.5%;
 	border: 1px solid #ccc;
   outline: 0;
   border-radius: 3px;
+
 }
 .elastic-url:focus {
   border: 1px solid #07c;
@@ -74,15 +75,19 @@
 }
 .request-bad{
   float:left;
-  width:60%;
-
+  width:58.1%;
+  margin-left:1%;
   background-color:red;
 }
 .request-good{
   float:left;
-  width:60%;
+  width:58.1%;
+  margin-left:1%;
   background-color:green;
 }
+
+.query-payload {}
+
 .binary-bulk{
   width: 100%;
   outline: 0;
@@ -100,15 +105,6 @@
       border-color:green;
       word-wrap: break-word;
     }
-    .query-payload{
-        width:98%;
-        margin-top:-2%;
-        margin-bottom:-3%;
-        margin-left:0.6%;
-    }
-
-
-
 
 
 .button-auth {
