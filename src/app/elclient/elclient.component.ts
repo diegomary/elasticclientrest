@@ -31,10 +31,25 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
   noAuth = false;
   authmode = "Auth";
   requestCheck = "";
-  catTutorial = "to create a bulk file download jq and then run: cat origin.json | .\/jq.exe -c \'{\"index\": {}}, .\' > bulkfile.json"
+  visitsLoaded = false;
+  visitCount = 0;
+  elasticLoading = true;
 
+  catTutorial = "to create a bulk file download jq and then run: cat origin.json | .\/jq.exe -c \'{\"index\": {}}, .\' > bulkfile.json"
+    //
   ngAfterViewInit() {}
-  ngOnInit() { }
+  ngOnInit() {
+      this.elasticservice.manageVisits('https://jwt-diegomary.rhcloud.com/writevisit')
+      .subscribe( data => {
+        this.elasticservice.manageVisits('https://jwt-diegomary.rhcloud.com/getvisits')
+        .subscribe( counter => {
+            this.visitCount = JSON.parse(counter._body).counter;
+            this.visitsLoaded = true;
+                }, (err) => { this.elasticresponse = err; } );
+        return;
+              }, (err) => { this.elasticresponse = err; } );
+      return;
+   }
   cht() { this.authmode = this.noAuth === false? "Auth" :"Connect";  }
   queryChange(newValue) {
     try { let theJson = $.parseJSON(newValue); this.requestCheck = "goodRequest";}
@@ -141,7 +156,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
     if(this.noAuth){
       this.elasticservice.getVerbUnsafe(fullUrlwitParam)
       .subscribe( data => {
-                this.elasticresponse = JSON.stringify(data,undefined,4);
+                this.elasticresponse = data;
               }, (err) => { this.elasticresponse = err; } );
       return;
     }

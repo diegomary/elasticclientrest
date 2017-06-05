@@ -11,7 +11,7 @@
   width:100%;
 }
 .login-panel {
-  width:41%;
+  width:40%;
   float:left;
 }
 .login-inputs {
@@ -19,14 +19,26 @@
   border-color:#4e4f51;
   border-width: thin;
   width:60%;
+  border-radius:2px;
+}
+.login-inputs:focus {
+  border: 1px solid #07c;
+  box-shadow: 0 0 10px #07c;
 }
 .second-panel {
-  width:59%;
+  width:60%;
   float:left;
+}
+.el-span{
+margin-left:1.6%;
+width:100%;
+font-size:x-small;
 }
 .elastic-url {
   height: 28px;
-	width: 99.5%;
+	width: 97.4%;
+  margin-left:1.6%;
+  margin-right:1%;
   border-style:solid;
   border-color:#4e4f51;
   border-width: thin;
@@ -66,7 +78,7 @@
 }
 .textqueries{
   width: 99%;
-  height: 28px;
+  height: 26px;
   border-style:solid;
   border-color:#4e4f51;
   border-width: thin;
@@ -81,7 +93,14 @@
   margin-left:1%;
   margin-right:1%;
 }
-
+.request-bad:focus {
+  border: 1px solid #07c;
+  box-shadow: 0 0 10px #07c;
+}
+.request-good:focus {
+  border: 1px solid #07c;
+  box-shadow: 0 0 10px #07c;
+}
 .request-bad{
   color:red;
   width:100%;
@@ -111,12 +130,16 @@
   vertical-align: bottom;
 }
 .result {
-      width:99%;
-      border-style:solid;
-      border-color:#4e4f51;
-      border-width: thin;
-      word-wrap: break-word;
+  width:99%;
+  border-style:solid;
+  border-color:#4e4f51;
+  border-width: thin;
+  word-wrap: break-word;
     }
+.result:focus {
+  border: 1px solid #07c;
+  box-shadow: 0 0 10px #07c;
+}
 .button-auth {
   background: red;
   outline:0;
@@ -131,3 +154,197 @@
     border: 1px solid #07c;
     box-shadow: 0 0 10px #07c;
 }
+
+.center-spinner {
+  z-index:1000;
+   left:50%;
+   top:50%;
+   -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%);
+   position:absolute;
+}
+
+
+/* The following css is for the spinner */
+
+#fountainG{
+	position:relative;
+	width:198px;
+	height:24px;
+	margin:auto;
+}
+
+.fountainG{
+	position:absolute;
+	top:0;
+	background-color:rgb(0,0,0);
+	width:24px;
+	height:24px;
+	animation-name:bounce_fountainG;
+		-o-animation-name:bounce_fountainG;
+		-ms-animation-name:bounce_fountainG;
+		-webkit-animation-name:bounce_fountainG;
+		-moz-animation-name:bounce_fountainG;
+	animation-duration:1.5s;
+		-o-animation-duration:1.5s;
+		-ms-animation-duration:1.5s;
+		-webkit-animation-duration:1.5s;
+		-moz-animation-duration:1.5s;
+	animation-iteration-count:infinite;
+		-o-animation-iteration-count:infinite;
+		-ms-animation-iteration-count:infinite;
+		-webkit-animation-iteration-count:infinite;
+		-moz-animation-iteration-count:infinite;
+	animation-direction:normal;
+		-o-animation-direction:normal;
+		-ms-animation-direction:normal;
+		-webkit-animation-direction:normal;
+		-moz-animation-direction:normal;
+	transform:scale(.3);
+		-o-transform:scale(.3);
+		-ms-transform:scale(.3);
+		-webkit-transform:scale(.3);
+		-moz-transform:scale(.3);
+	border-radius:16px;
+		-o-border-radius:16px;
+		-ms-border-radius:16px;
+		-webkit-border-radius:16px;
+		-moz-border-radius:16px;
+}
+
+#fountainG_1{
+	left:0;
+	animation-delay:0.6s;
+		-o-animation-delay:0.6s;
+		-ms-animation-delay:0.6s;
+		-webkit-animation-delay:0.6s;
+		-moz-animation-delay:0.6s;
+}
+
+#fountainG_2{
+	left:25px;
+	animation-delay:0.75s;
+		-o-animation-delay:0.75s;
+		-ms-animation-delay:0.75s;
+		-webkit-animation-delay:0.75s;
+		-moz-animation-delay:0.75s;
+}
+
+#fountainG_3{
+	left:49px;
+	animation-delay:0.9s;
+		-o-animation-delay:0.9s;
+		-ms-animation-delay:0.9s;
+		-webkit-animation-delay:0.9s;
+		-moz-animation-delay:0.9s;
+}
+
+#fountainG_4{
+	left:74px;
+	animation-delay:1.05s;
+		-o-animation-delay:1.05s;
+		-ms-animation-delay:1.05s;
+		-webkit-animation-delay:1.05s;
+		-moz-animation-delay:1.05s;
+}
+
+#fountainG_5{
+	left:99px;
+	animation-delay:1.2s;
+		-o-animation-delay:1.2s;
+		-ms-animation-delay:1.2s;
+		-webkit-animation-delay:1.2s;
+		-moz-animation-delay:1.2s;
+}
+
+#fountainG_6{
+	left:124px;
+	animation-delay:1.35s;
+		-o-animation-delay:1.35s;
+		-ms-animation-delay:1.35s;
+		-webkit-animation-delay:1.35s;
+		-moz-animation-delay:1.35s;
+}
+
+#fountainG_7{
+	left:148px;
+	animation-delay:1.5s;
+		-o-animation-delay:1.5s;
+		-ms-animation-delay:1.5s;
+		-webkit-animation-delay:1.5s;
+		-moz-animation-delay:1.5s;
+}
+
+#fountainG_8{
+	left:173px;
+	animation-delay:1.64s;
+		-o-animation-delay:1.64s;
+		-ms-animation-delay:1.64s;
+		-webkit-animation-delay:1.64s;
+		-moz-animation-delay:1.64s;
+}
+
+
+
+@keyframes bounce_fountainG{
+	0%{
+	transform:scale(1);
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+	transform:scale(.3);
+		background-color:rgb(255,255,255);
+	}
+}
+
+@-o-keyframes bounce_fountainG{
+	0%{
+	-o-transform:scale(1);
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+	-o-transform:scale(.3);
+		background-color:rgb(255,255,255);
+	}
+}
+
+@-ms-keyframes bounce_fountainG{
+	0%{
+	-ms-transform:scale(1);
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+	-ms-transform:scale(.3);
+		background-color:rgb(255,255,255);
+	}
+}
+
+@-webkit-keyframes bounce_fountainG{
+	0%{
+	-webkit-transform:scale(1);
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+	-webkit-transform:scale(.3);
+		background-color:rgb(255,255,255);
+	}
+}
+
+@-moz-keyframes bounce_fountainG{
+	0%{
+	-moz-transform:scale(1);
+		background-color:rgb(0,0,0);
+	}
+
+	100%{
+	-moz-transform:scale(.3);
+		background-color:rgb(255,255,255);
+	}
+}
+
+/* end of css is for the spinner */

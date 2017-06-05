@@ -1,12 +1,14 @@
 <div class="container">
-  <h1 style="opacity:.4">You Know, for Search</h1>
+  <div style="float:left;width:41%"><h1 style="opacity:.4">You Know, for Search</h1></div>
+  <div style="float:left;width:59%;line-height:300% "><p *ngIf="visitsLoaded" style="opacity:.4">{{visitCount}}&nbsp;visits</p></div>
+  <div style="clear:left"></div>
   <br>
   <div class ="header">
     <div class="login-panel">
       <table>
         <tr *ngIf="!noAuth">
           <td style="width:20%"><span>user</span> </td>
-          <td style="width:80%" ><input  class="login-inputs" placeholder="username" type="text" [(ngModel)] = "username"></td>
+          <td style="width:80%" ><input class="login-inputs" placeholder="username" type="text" [(ngModel)] = "username"></td>
         </tr>
         <tr *ngIf="!noAuth">
           <td style="width:20%"><span >password&nbsp;</span></td>
@@ -23,9 +25,8 @@
     <div class="second-panel">
       <div class="elastic-wrapper">
       	<form>
-        <span style="font-size:x-small">Elastic Search Service URL</span>
+        <span class="el-span">Elastic Search Service URL</span>
       	<input type="text" name="focus" required class="elastic-url" [(ngModel)] ="elasticserver" placeholder="Enter Url of elastic server" />
-
       	</form>
       </div>
     </div>
@@ -33,17 +34,19 @@
   </div>
   <br>
   <div class ="main-operations" >
-    <div class = "buttons">
+
+    <div class = "buttons"  >
         <p><button class="buttonqueries" (click)="getQuery()">get</button></p>
         <p><button class="buttonqueries" (click)="postQuery()">post</button></p>
         <p><button class="buttonqueries" (click)="putQuery()">put</button></p>
         <p><button class="buttonqueries" (click)="deleteQuery()" style="padding-left:1%">delete</button></p>
         <form>
-        <p><label for="bin-input" class="binary-bulk">bulk</label></p>
+        <p><label for="bin-input"  class="binary-bulk">bulk</label></p>
           <input id="bin-input" style="display:none" onClick="this.form.reset()" type="file" multiple="false" (change)="bulkFilesChange($event)" accept=".txt,.json,.log">
         </form>
     </div>
-    <div class ="parameters">
+
+    <div class ="parameters" >
           <p><input class="textqueries" type="text" placeholder ="parameters for get request ......" [(ngModel)] = "getParameter" ></p>
           <p><input class="textqueries" type="text" placeholder=" parameters for post request ......" [(ngModel)] = "postParameter" ></p>
           <p><input class="textqueries" type="text" placeholder=" parameters for put request ......" [(ngModel)] = "putParameter"></p>
@@ -51,16 +54,26 @@
           <p><input class="textqueries" type="text" placeholder=" eg: indexname/typename/_bulk" [(ngModel)] = "binaryParameter"></p>
     </div>
     <div class ="request-container">
-         <p><textarea class ="request-bad" [class.request-good] = "requestCheck == 'goodRequest'"  [(ngModel)] = "queryPayload"  rows="15" placeholder=" request ......" (ngModelChange)="queryChange($event)"></textarea></p>
+         <p><textarea class ="request-bad" [class.request-good] = "requestCheck == 'goodRequest'"  [(ngModel)] = "queryPayload"  rows="14" placeholder=" request ......" (ngModelChange)="queryChange($event)"></textarea></p>
     </div>
     <div style="clear:left;"></div>
   </div>
   <br>
-  <div class ="foot-operations" >
+  <div class ="foot-operations" style = "position:relative; height:300px;" >
     <textarea  rows="20" class="result" [(ngModel)] ="elasticresponse" placeholder=" response......"></textarea>
-    <span style="font-size:xx-small">{{catTutorial}}</span>
-    <div style="font-size:xx-small">{{jqueryversion}}&nbsp;and Angular 2/4</div>
+    <div *ngIf="elasticLoading" class="center-spinner">
+        <div id="fountainG">
+        	<div id="fountainG_1" class="fountainG"></div>
+        	<div id="fountainG_2" class="fountainG"></div>
+        	<div id="fountainG_3" class="fountainG"></div>
+        	<div id="fountainG_4" class="fountainG"></div>
+        	<div id="fountainG_5" class="fountainG"></div>
+        	<div id="fountainG_6" class="fountainG"></div>
+        	<div id="fountainG_7" class="fountainG"></div>
+        	<div id="fountainG_8" class="fountainG"></div>
+        </div>
+    </div>
   </div>
-
-
+<span style="font-size:xx-small">{{catTutorial}}</span>
+<div style="font-size:xx-small">{{jqueryversion}}&nbsp;and Angular 2/4</div>
 </div>
