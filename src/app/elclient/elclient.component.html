@@ -1,7 +1,8 @@
 <div class="container">
-  <div style="float:left;width:41%"><h1 style="opacity:.4">You Know, for Search</h1></div>
-  <div style="float:left;width:59%;line-height:300% "><p *ngIf="visitsLoaded" style="opacity:.4">{{visitCount}}&nbsp;visits</p></div>
-  <div style="clear:left"></div>
+
+  <div><h1 style="opacity:.4">You Know, for Search</h1></div>
+  <div>&nbsp;<span *ngIf="visitsLoaded" style="opacity:.4;font-size:x-small">{{visitCount}}&nbsp;visits</span></div>
+
   <br>
   <div class ="header">
     <div class="login-panel">
@@ -45,13 +46,13 @@
           <input id="bin-input" style="display:none" onClick="this.form.reset()" type="file" multiple="false" (change)="bulkFilesChange($event)" accept=".txt,.json,.log">
         </form>
     </div>
-
     <div class ="parameters" >
-          <p><input class="textqueries" type="text" placeholder ="parameters for get request ......" [(ngModel)] = "getParameter" ></p>
+          <p><input class="textqueries" type="text" placeholder =" parameters for get request ......" [(ngModel)] = "getParameter" ></p>
           <p><input class="textqueries" type="text" placeholder=" parameters for post request ......" [(ngModel)] = "postParameter" ></p>
           <p><input class="textqueries" type="text" placeholder=" parameters for put request ......" [(ngModel)] = "putParameter"></p>
           <p><input class="textqueries" type="text" placeholder=" parameters for delete request ......" [(ngModel)] = "deleteParameter"></p>
-          <p><input class="textqueries" type="text" placeholder=" eg: indexname/typename/_bulk" [(ngModel)] = "binaryParameter"></p>
+          <p><input class="textqueries" type="text" placeholder=" indexname/typename/_bulk" [(ngModel)] = "binaryParameter"></p>
+          <span style="font-size:xx-small">{{catTutorial}}</span>
     </div>
     <div class ="request-container">
          <p><textarea class ="request-bad" [class.request-good] = "requestCheck == 'goodRequest'"  [(ngModel)] = "queryPayload"  rows="14" placeholder=" request ......" (ngModelChange)="queryChange($event)"></textarea></p>
@@ -60,7 +61,7 @@
   </div>
   <br>
   <div class ="foot-operations" style = "position:relative; height:300px;" >
-    <textarea  rows="20" class="result" [(ngModel)] ="elasticresponse" placeholder=" response......"></textarea>
+    <textarea  style="height:100%" class="result" [(ngModel)] ="elasticresponse" placeholder=" response......"></textarea>
     <div *ngIf="elasticLoading" class="center-spinner">
         <div id="fountainG">
         	<div id="fountainG_1" class="fountainG"></div>
@@ -74,6 +75,6 @@
         </div>
     </div>
   </div>
-<span style="font-size:xx-small">{{catTutorial}}</span>
-<div style="font-size:xx-small">{{jqueryversion}}&nbsp;and Angular 2/4</div>
+
+<p style="font-size:xx-small;clear:both">{{jqueryversion}}&nbsp;and Angular 2/4</p>
 </div>
