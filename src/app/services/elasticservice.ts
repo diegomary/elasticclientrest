@@ -13,25 +13,11 @@ export class ElasticService {
 
   manageVisits(apiVisits) {
     return this.http.get(apiVisits)
-
-      .map( res => { console.log(res); return res;})
+      .map( res => { return res;})
       .catch(  (error) => {
         return Observable.throw(error);
        })
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
   authenticateService(basictoken, elasticserver) {
     this.headers.set("Authorization",basictoken);
     return this.http.get(elasticserver,{headers:this.headers})

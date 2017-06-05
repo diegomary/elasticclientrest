@@ -1,6 +1,3 @@
-// for bulk loads
-// cat file.json | ./jq.exe -c '{"index": {}}, .' > test.json
-
 import { Component, OnInit,AfterViewInit } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
@@ -33,12 +30,26 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
   requestCheck = "";
   visitsLoaded = false;
   visitCount = 0;
-  elasticLoading = false;
-
-  catTutorial = "use Jq for bulk. run: cat origin.json | .\/jq.exe -c \'{\"index\": {}}, .\' > bulkfile.json"
-    //
+  elasticLoading = true;
+  elasticTutorials="";
+  catTutorial = "";
+  bulkTutorialFocus(){
+    this.elasticTutorials= "How to build a bulk file. (a file with multiple documents)\r\n\r\nThe bulk operation is particularly delicate because the bulk file\r\nmust be prepared in the right way for the bulk to be successful.\r\nThe first thing to do is to create a file with the following format:\r\n\r\n{\"index\":{}}\r\n{\"name\":\"david\",\"email\":\"david@dmm888.com\"}\r\n{\"index\":{}}\r\n{\"name\":\"maria\",\"email\":\"maria@dgmail.com\"}\r\n{\"index\":{}}\r\n............\r\nThen we can use the following parameter in the query:\r\nindexname\/typename\/_bulk.\r\n\r\nIn order to produce the right bulk file just download the JQ tool from \r\nhttps:\/\/stedolan.github.io\/jq\/\r\n\r\nuse Jq for bulk in the following way run:\r\ncat origin.json | .\/jq.exe -c \'{\"index\": {}}, .\' > bulkfile.json\r\n";
+  }
+  deleteTutorialFocus(){
+    this.elasticTutorials="delete tutorial";
+  }
+  getTutorialFocus(){
+    this.elasticTutorials="get tutorial";
+  }
+  postTutorialFocus(){
+    this.elasticTutorials="post tutorial";
+  }
+  putTutorialFocus(){
+    this.elasticTutorials="put tutorial";
+  }
   ngAfterViewInit() {
-    this.elasticLoading = true;
+
     this.elasticservice.manageVisits('https://jwt-diegomary.rhcloud.com/writevisit')
     .subscribe( data => {
       this.elasticservice.manageVisits('https://jwt-diegomary.rhcloud.com/getvisits')
