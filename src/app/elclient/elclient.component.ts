@@ -35,7 +35,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
   visitCount = 0;
   elasticLoading = false;
 
-  catTutorial = "to create a bulk file download jq and then run: cat origin.json | .\/jq.exe -c \'{\"index\": {}}, .\' > bulkfile.json"
+  catTutorial = "use Jq for bulk. run: cat origin.json | .\/jq.exe -c \'{\"index\": {}}, .\' > bulkfile.json"
     //
   ngAfterViewInit() {
     this.elasticLoading = true;
