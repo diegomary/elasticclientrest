@@ -7,18 +7,18 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ElasticService {
-  public headers:Headers;
 
-  constructor (private http: Http) { this.headers = new Headers(); }
+  private headers:Headers;
+  public constructor (private http: Http) { this.headers = new Headers(); }
 
-  manageVisits(apiVisits) {
+  public manageVisits(apiVisits:string):any {
     return this.http.get(apiVisits)
       .map( res => { return res;})
       .catch(  (error) => {
         return Observable.throw(error);
        })
   }
-  authenticateService(basictoken, elasticserver) {
+  public authenticateService(basictoken:string, elasticserver:string):any {
     this.headers.set("Authorization",basictoken);
     return this.http.get(elasticserver,{headers:this.headers})
 
@@ -30,7 +30,7 @@ export class ElasticService {
         return Observable.throw(error);
        })
   }
-  authenticateServiceUnsafe(elasticserver) {
+  public authenticateServiceUnsafe(elasticserver:string):any {
     return this.http.get(elasticserver)
       .map( res => { return res.json();})
       .catch(  (error) => {
@@ -40,7 +40,7 @@ export class ElasticService {
         return Observable.throw(error);
        })
   }
-  postVerb(basictoken, elasticserver, rawData) {
+  public postVerb(basictoken:string, elasticserver:string, rawData:string):any {
 
     this.headers.set("Authorization",basictoken);
     this.headers.set("Content-Type",'application/x-www-form-urlencoded');
@@ -54,7 +54,7 @@ export class ElasticService {
         return Observable.throw(error);
        })
   }
-  postVerbUnsafe(elasticserver, rawData) {
+  public postVerbUnsafe(elasticserver:string, rawData:string):any {
     this.headers.delete("Authorization");
     this.headers.set("Content-Type",'application/x-www-form-urlencoded');
     return this.http.post(elasticserver,rawData, {headers:this.headers})
@@ -66,7 +66,7 @@ export class ElasticService {
         return Observable.throw(error);
        })
   }
-  putVerb(basictoken, elasticserver, rawData) {
+  public putVerb(basictoken:string, elasticserver:string, rawData:string):any {
 
     this.headers.set("Authorization",basictoken);
     this.headers.set("Content-Type",'application/x-www-form-urlencoded');
@@ -80,7 +80,7 @@ export class ElasticService {
         return Observable.throw(error);
        })
   }
-  putVerbUnsafe(elasticserver, rawData) {
+  public putVerbUnsafe(elasticserver:string, rawData:string):any {
     this.headers.delete("Authorization");
     this.headers.set("Content-Type",'application/x-www-form-urlencoded');
     return this.http.put(elasticserver,rawData, {headers:this.headers})
@@ -92,7 +92,7 @@ export class ElasticService {
         return Observable.throw(error);
        })
   }
-  deleteVerb(basictoken, elasticserver, rawData) {
+  public deleteVerb(basictoken:string, elasticserver:string, rawData:string):any {
 
     this.headers.set("Authorization",basictoken);
     this.headers.set("Content-Type",'application/x-www-form-urlencoded');
@@ -110,7 +110,7 @@ export class ElasticService {
         return Observable.throw(error);
        })
   }
-  deleteVerbUnsafe(elasticserver, rawData) {
+  public deleteVerbUnsafe(elasticserver:string, rawData:string):any {
     this.headers.delete("Authorization");
     this.headers.set("Content-Type",'application/x-www-form-urlencoded');
     let reqOptions = new RequestOptions({
@@ -127,7 +127,7 @@ export class ElasticService {
         return Observable.throw(error);
        })
   }
-  getVerb(basictoken, elasticserver) {
+  public getVerb(basictoken:string, elasticserver:string):any {
     this.headers.set("Authorization",basictoken);
     return this.http.get(elasticserver,{headers:this.headers})
       .map( res => { return res.json();})
@@ -138,7 +138,7 @@ export class ElasticService {
         return Observable.throw(error);
        })
   }
-  getVerbUnsafe(elasticserver) {
+  public getVerbUnsafe(elasticserver:string):any {
     return this.http.get(elasticserver)
       .map( res => { return res.json();})
       .catch(  (error) => {

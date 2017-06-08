@@ -12,44 +12,43 @@ import $ from 'jquery/dist/jquery';
 })
 export class ElclientComponent implements OnInit, AfterViewInit  {
 
-  constructor(private elasticservice: ElasticService,private http: Http) { }
-  jqueryversion = `This site is using Jquery ${$.fn.jquery}`;
-  username = "";
-  queryPayload = ""
-  password = "";
-  authHeader = '';
-  elasticserver = "http://localhost:9200/";
-  postParameter = "";
-  putParameter = "";
-  deleteParameter = "";
-  elasticresponse = "";
-  getParameter = "";
-  binaryParameter = "";
-  noAuth = false;
-  authmode = "Auth";
-  requestCheck = "";
-  visitsLoaded = false;
-  visitCount = 0;
-  elasticLoading = true;
-  elasticTutorials="";
-  catTutorial = "";
-  bulkTutorialFocus(){
+  public constructor(private elasticservice: ElasticService,private http: Http) { }
+  public jqueryversion:string = `This site is using Jquery ${$.fn.jquery}`;
+  public username:string = "";
+  public queryPayload: string = ""
+  public password:string = "";
+  public authHeader:string = '';
+  public elasticserver:string = "https://localhost:9200/";
+  public postParameter:string = "";
+  public putParameter:string = "";
+  public deleteParameter:string = "";
+  public elasticresponse:string = "";
+  public getParameter:string = "";
+  public binaryParameter:string = "";
+  public noAuth:boolean = false;
+  public authmode:string = "Auth";
+  public requestCheck:string = "";
+  public visitsLoaded:boolean = false;
+  public visitCount:number = 0;
+  public elasticLoading:boolean = true;
+  public elasticTutorials:string="";
+  public catTutorial:string = "";
+  public bulkTutorialFocus():void{
     this.elasticTutorials= "How to build a bulk file. (a file with multiple documents)\r\n\r\nThe bulk operation is particularly delicate because the bulk file\r\nmust be prepared in the right way for the bulk to be successful.\r\nThe first thing to do is to create a file with the following format:\r\n\r\n{\"index\":{}}\r\n{\"name\":\"david\",\"email\":\"david@dmm888.com\"}\r\n{\"index\":{}}\r\n{\"name\":\"maria\",\"email\":\"maria@dgmail.com\"}\r\n{\"index\":{}}\r\n............\r\nThen we can use the following parameter in the query:\r\nindexname\/typename\/_bulk.\r\n\r\nIn order to produce the right bulk file just download the JQ tool from \r\nhttps:\/\/stedolan.github.io\/jq\/\r\n\r\nuse Jq for bulk in the following way run:\r\ncat origin.json | .\/jq.exe -c \'{\"index\": {}}, .\' > bulkfile.json\r\n";
   }
-  deleteTutorialFocus(){
+  public deleteTutorialFocus():void{
     this.elasticTutorials="delete tutorial";
   }
-  getTutorialFocus(){
+  public getTutorialFocus():void{
     this.elasticTutorials="get tutorial";
   }
-  postTutorialFocus(){
+  public postTutorialFocus():void{
     this.elasticTutorials="post tutorial";
   }
-  putTutorialFocus(){
+  public putTutorialFocus():void{
     this.elasticTutorials="put tutorial";
   }
-  ngAfterViewInit() {
-
+  public ngAfterViewInit():void {
     this.elasticservice.manageVisits('https://jwt-diegomary.rhcloud.com/writevisit')
     .subscribe( data => {
       this.elasticservice.manageVisits('https://jwt-diegomary.rhcloud.com/getvisits')
@@ -63,13 +62,13 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
     return;
 
   }
-  ngOnInit() {}
-  cht() { this.authmode = this.noAuth === false? "Auth" :"Connect";  }
-  queryChange(newValue) {
+  public ngOnInit():void {}
+  public cht():void { this.authmode = this.noAuth === false? "Auth" :"Connect";  }
+  public queryChange(newValue:string):void {
     try { let theJson = $.parseJSON(newValue); this.requestCheck = "goodRequest";}
     catch(err) {this.requestCheck = ""; console.log(err.message);}
   }
-  bulkFilesChange(event)  {
+  public bulkFilesChange(event:any) :void {
     if(!this.binaryParameter) {this.elasticresponse = "no parameter supplied please specify for example  ->   indexname/typename/_bulk"; return;}
     this.elasticLoading = true;
     let fullUrlwitParam = this.elasticserver + this.binaryParameter;
@@ -95,7 +94,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
            () => {}
          );}
   }
-  authenticate() {
+  public authenticate():void {
       // Unsafe no auth
       this.elasticLoading = true;
       if(this.noAuth){
@@ -117,7 +116,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
                 this.elasticLoading = false;
               }, (err) => { this.elasticresponse = err; this.elasticLoading = false; } );
     }
-  postQuery() {
+  public postQuery():void {
     if(!this.postParameter) {this.elasticresponse = "no parameter supplied please specify for example  ->   indexname/typename   and then provide a request query"; return;}
     let fullUrlwitParam = this.elasticserver + this.postParameter;
     this.elasticLoading = true;
@@ -140,7 +139,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
                 this.elasticLoading = false;
               }, (err) => { this.elasticresponse = err;this.elasticLoading = false; } );
     }
-  putQuery() {
+  public putQuery():void {
     if(!this.putParameter) {this.elasticresponse = "no parameter supplied please specify for example  ->   indexname/typename   and then provide a request query"; return;}
     let fullUrlwitParam = this.elasticserver + this.putParameter;
       // Unsafe no auth
@@ -162,7 +161,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
                 this.elasticLoading = false;
               }, (err) => { this.elasticresponse = err;this.elasticLoading = false; } );
     }
-  deleteQuery() {
+  public deleteQuery():void {
     if(!this.deleteParameter) {this.elasticresponse = "no parameter supplied please specify for example  ->   indexname"; return;}
     let fullUrlwitParam = this.elasticserver + this.deleteParameter;
       // Unsafe no auth
@@ -184,7 +183,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
                 this.elasticLoading = false;
               }, (err) => { this.elasticresponse = err;this.elasticLoading = false; } );
   }
-  getQuery() {
+  public getQuery():void {
     if(!this.getParameter) {this.elasticresponse = "no parameter supplied please specify for example  ->   indexname/typename/_search"; return;}
     let fullUrlwitParam = this.elasticserver + this.getParameter;
     // Unsafe no auth
