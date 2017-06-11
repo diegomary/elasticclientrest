@@ -1,7 +1,7 @@
 import { Component, OnInit,AfterViewInit } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import {Observable} from 'rxjs/Rx';
-
+import * as d3 from 'd3';
 import { ElasticService } from '../services/elasticservice';
 import $ from 'jquery/dist/jquery';
 @Component({
@@ -14,9 +14,9 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
 
   public constructor(private elasticservice: ElasticService,private http: Http) { }
   public jqueryversion:string = `This site is using Jquery ${$.fn.jquery}`;
-  public username:string = "";
-  public queryPayload: string = ""
-  public password:string = "";
+  public username:string = "elastic";
+  public password:string = "changeme";
+  public queryPayload: string = "";
   public authHeader:string = '';
   public elasticserver:string = "https://localhost:9200/";
   public postParameter:string = "";
@@ -28,6 +28,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
   public noAuth:boolean = false;
   public authmode:string = "Auth";
   public requestCheck:string = "";
+  public infoVisible:boolean = false;
   public visitsLoaded:boolean = false;
   public visitCount:number = 0;
   public elasticLoading:boolean = true;
@@ -63,6 +64,8 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
 
   }
   public ngOnInit():void {}
+  public hideInfo():void {this.infoVisible = false;}
+  public showInfo():void {this.infoVisible = true;}
   public cht():void { this.authmode = this.noAuth === false? "Auth" :"Connect";  }
   public queryChange(newValue:string):void {
     try { let theJson = $.parseJSON(newValue); this.requestCheck = "goodRequest";}
