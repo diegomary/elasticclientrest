@@ -14,9 +14,9 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
 
   public constructor(private elasticservice: ElasticService,private http: Http) { }
   public jqueryversion:string = `This site is using Jquery ${$.fn.jquery}`;
-  public username:string = "elastic";
-  public password:string = "changeme";
-  public queryPayload: string = "";
+  public username = "elastic";
+  public password = "changeme";
+  public queryPayload = "";
   public authHeader:string = '';
   public elasticserver:string = "https://localhost:9200/";
   public postParameter:string = "";
@@ -34,7 +34,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
   public elasticLoading:boolean = true;
   public elasticTutorials:string="";
   public catTutorial:string = "";
-  public bulkTutorialFocus():void{
+  public bulkTutorialFocus(){
     this.elasticTutorials= "How to build a bulk file. (a file with multiple documents)\r\n\r\nThe bulk operation is particularly delicate because the bulk file\r\nmust be prepared in the right way for the bulk to be successful.\r\nThe first thing to do is to create a file with the following format:\r\n\r\n{\"index\":{}}\r\n{\"name\":\"david\",\"email\":\"david@dmm888.com\"}\r\n{\"index\":{}}\r\n{\"name\":\"maria\",\"email\":\"maria@dgmail.com\"}\r\n{\"index\":{}}\r\n............\r\nThen we can use the following parameter in the query:\r\nindexname\/typename\/_bulk.\r\n\r\nIn order to produce the right bulk file just download the JQ tool from \r\nhttps:\/\/stedolan.github.io\/jq\/\r\n\r\nuse Jq for bulk in the following way run:\r\ncat origin.json | .\/jq.exe -c \'{\"index\": {}}, .\' > bulkfile.json\r\n";
   }
   public deleteTutorialFocus():void{
@@ -63,7 +63,24 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
     return;
 
   }
-  public ngOnInit():void {}
+  public ngOnInit():void {
+    var dv = d3.select(".bar")
+    .selectAll("div")
+    .data([12, 15, 8])
+    dv.enter().append("div")
+    //.text(function(d) { return d; })
+    .attr("class","isto")
+    .style("display","inline-block")
+    .style("background-color","white")
+    .style("vertical-align","bottom")
+    .style("margin-right","2px")
+    .style("width","100px")
+    .style("height", function(d) {
+					var barHeight = d * 5;
+					return barHeight + "px";
+				});
+    dv.exit().remove();
+  }
   public hideInfo():void {this.infoVisible = false;}
   public showInfo():void {this.infoVisible = true;}
   public cht():void { this.authmode = this.noAuth === false? "Auth" :"Connect";  }
