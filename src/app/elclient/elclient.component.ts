@@ -4,6 +4,8 @@ import {Observable} from 'rxjs/Rx';
 import * as d3 from 'd3';
 import { ElasticService } from '../services/elasticservice';
 import $ from 'jquery/dist/jquery';
+import {VideoComponent} from '../video/video.component'
+
 @Component({
   selector: 'app-elclient',
   providers: [ElasticService],
@@ -13,6 +15,7 @@ import $ from 'jquery/dist/jquery';
 export class ElclientComponent implements OnInit, AfterViewInit  {
 
   public constructor(private elasticservice: ElasticService,private http: Http) { }
+  public childmessage : string = "I am passed from Parent to child component";
   public jqueryversion:string = `This site is using Jquery ${$.fn.jquery}`;
   public username = "elastic";
   public password = "changeme";
@@ -50,6 +53,10 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
     this.elasticTutorials="put tutorial";
   }
   public ngAfterViewInit():void {
+
+
+//setInterval(() => this.childmessage = new Date().toUTCString(), 500);
+
     this.elasticservice.manageVisits('https://jwt-diegomary.rhcloud.com/writevisit')
     .subscribe( data => {
       this.elasticservice.manageVisits('https://jwt-diegomary.rhcloud.com/getvisits')
@@ -64,6 +71,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
 
   }
   public ngOnInit():void {
+
     var dv = d3.select(".bar")
     .selectAll("div")
     .data([12, 15, 8])

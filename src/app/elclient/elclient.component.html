@@ -1,9 +1,10 @@
 <div class="info-hidden"  [class.info-visible] = "infoVisible === true" >
   <span (click)="hideInfo()" class="close">&times;&nbsp;</span>
   <h2 style="color:white">Nodes in instance</h2>
-
   <div class="bar">
   </div>
+  
+  <app-video [greetMessage]="childmessage"></app-video>
 
 </div>
 <div class="container">

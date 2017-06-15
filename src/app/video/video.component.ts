@@ -1,4 +1,4 @@
-import { Component, OnInit,AfterViewInit } from '@angular/core';
+import { Component, Input, OnInit,AfterViewInit,OnChanges } from '@angular/core';
 import jwplayer from  '@bianjp/jwplayer/dist/jwplayer';
 
 @Component({
@@ -6,10 +6,12 @@ import jwplayer from  '@bianjp/jwplayer/dist/jwplayer';
   templateUrl: './video.component.html',
   styleUrls: ['./video.component.css']
 })
-export class VideoComponent implements AfterViewInit {
+export class VideoComponent implements AfterViewInit,OnInit {
+ @Input() greetMessage: string ;
 
   constructor() { }
-ngAfterViewInit(){
+  ngAfterViewInit(){
+
   let playerInstance = jwplayer("jwplayercontainer");
     playerInstance.setup({
     "playlist": "./assets/playList.txt",   // renamed from json to txt because dmm888.com doesn't like json
@@ -18,8 +20,8 @@ ngAfterViewInit(){
     "key":"G1VjVx3NzbExARB/D0TFxwr4oC3ilweCL/dt3A==",
     "autostart": false});
  }
-  ngOnInit() {
-
-  }
-
+  ngOnInit() {}
+  ngOnChanges(...args: any[]) {
+     console.log('changing', args);
+    }
 }
