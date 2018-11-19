@@ -21,7 +21,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
   public password = "changeme";
   public queryPayload = "";
   public authHeader:string = '';
-  public elasticserver:string = "https://localhost:9200/";
+  public elasticserver:string = "http://localhost:9200/";
   public postParameter:string = "";
   public putParameter:string = "";
   public deleteParameter:string = "";
@@ -57,7 +57,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
 
 //setInterval(() => this.childmessage = new Date().toUTCString(), 500);
 
-    this.elasticservice.manageVisits('https://jwt-diegomary.rhcloud.com/writevisit')
+    /* this.elasticservice.manageVisits('https://jwt-diegomary.rhcloud.com/writevisit')
     .subscribe( data => {
       this.elasticservice.manageVisits('https://jwt-diegomary.rhcloud.com/getvisits')
       .subscribe( counter => {
@@ -68,7 +68,7 @@ export class ElclientComponent implements OnInit, AfterViewInit  {
       return;
             }, (err) => { this.elasticresponse = err; this.elasticLoading = false;} );
     return;
-
+ */
   }
   public ngOnInit():void {
 

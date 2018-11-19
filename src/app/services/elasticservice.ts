@@ -43,7 +43,7 @@ export class ElasticService {
   public postVerb(basictoken:string, elasticserver:string, rawData:string):any {
 
     this.headers.set("Authorization",basictoken);
-    this.headers.set("Content-Type",'application/x-www-form-urlencoded');
+    this.headers.set("Content-Type",'application/json');
 
     return this.http.post(elasticserver,rawData, {headers:this.headers})
       .map( res => { return res.json();})
@@ -56,7 +56,7 @@ export class ElasticService {
   }
   public postVerbUnsafe(elasticserver:string, rawData:string):any {
     this.headers.delete("Authorization");
-    this.headers.set("Content-Type",'application/x-www-form-urlencoded');
+    this.headers.set("Content-Type",'application/json');
     return this.http.post(elasticserver,rawData, {headers:this.headers})
       .map( res => { return res.json();})
       .catch(  (error) => {
@@ -69,7 +69,7 @@ export class ElasticService {
   public putVerb(basictoken:string, elasticserver:string, rawData:string):any {
 
     this.headers.set("Authorization",basictoken);
-    this.headers.set("Content-Type",'application/x-www-form-urlencoded');
+    this.headers.set("Content-Type",'application/json');
 
     return this.http.put(elasticserver,rawData, {headers:this.headers})
       .map( res => { return res.json();})
@@ -82,7 +82,7 @@ export class ElasticService {
   }
   public putVerbUnsafe(elasticserver:string, rawData:string):any {
     this.headers.delete("Authorization");
-    this.headers.set("Content-Type",'application/x-www-form-urlencoded');
+    this.headers.set("Content-Type",'application/json');
     return this.http.put(elasticserver,rawData, {headers:this.headers})
       .map( res => { return res.json();})
       .catch(  (error) => {
@@ -95,7 +95,7 @@ export class ElasticService {
   public deleteVerb(basictoken:string, elasticserver:string, rawData:string):any {
 
     this.headers.set("Authorization",basictoken);
-    this.headers.set("Content-Type",'application/x-www-form-urlencoded');
+    this.headers.set("Content-Type",'application/json');
     let reqOptions = new RequestOptions({
       headers: this.headers,
       body: rawData
@@ -112,7 +112,7 @@ export class ElasticService {
   }
   public deleteVerbUnsafe(elasticserver:string, rawData:string):any {
     this.headers.delete("Authorization");
-    this.headers.set("Content-Type",'application/x-www-form-urlencoded');
+    this.headers.set("Content-Type",'application/json');
     let reqOptions = new RequestOptions({
       headers: this.headers,
       body: rawData
